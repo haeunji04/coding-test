@@ -1,5 +1,8 @@
 package main.java.programmers.level0;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 /**
  * 가위는 2 바위는 0 보는 5로 표현합니다.
  * 가위 바위 보를 내는 순서대로 나타낸 문자열 rsp가 매개변수로 주어질 때,
@@ -9,7 +12,7 @@ package main.java.programmers.level0;
 public class 가위바위보 {
 
     class Solution {
-        public String solution(String rsp) {
+        public String solution1(String rsp) {
             char[] arr = rsp.toCharArray();
             String answer = "";
             for(char c : arr){
@@ -22,6 +25,11 @@ public class 가위바위보 {
             }
             return answer;
         }
+
+        public String solution2(String rsp) {
+            return Arrays.stream(rsp.split("")).map(s -> s.equals("2") ? "0" : s.equals("0") ? "5" : "2").collect(Collectors.joining());
+        }
+
     }
 
 }
