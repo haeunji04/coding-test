@@ -9,7 +9,7 @@ package main.java.programmers.level0;
  */
 public class 문자반복출력하기 {
 
-    class Solution {
+    class Solution1 {
         public String solution(String my_string, int n) {
             String answer = "";
 
@@ -22,5 +22,16 @@ public class 문자반복출력하기 {
             return answer;
         }
     }
+
+//    * repeat : java 11 버전부터 가능
+//    class Solution2 {
+//        public String solution(String my_string, int n) {
+//            StringBuilder sb = new StringBuilder();
+//            for(char c : my_string.toCharArray()){
+//                sb.append((c + "").repeat(n));
+//            }
+//            return sb.toString();
+//        }
+//    }
 
 }
