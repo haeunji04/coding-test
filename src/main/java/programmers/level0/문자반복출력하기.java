@@ -24,7 +24,6 @@ public class 문자반복출력하기 {
     }
 
 //    * repeat : java 11 버전부터 가능
-
     public String solution2(String my_string, int n) {
         StringBuilder sb = new StringBuilder();
         for(char c : my_string.toCharArray()){

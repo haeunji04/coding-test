@@ -13,7 +13,7 @@ public class Main {
 //        int n = 173;
 
         문자반복출력하기 result = new 문자반복출력하기();
-        result.solution4("Hello", 3);
+        System.out.println(result.solution2("Hello", 3));
 
     }
 
