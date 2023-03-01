@@ -22,27 +22,50 @@ import java.util.Queue;
  */
 public class 카드뭉치 {
 
-    public String solution(String[] cards1, String[] cards2, String[] goal) {
-        Queue<String> goalQueue = new LinkedList<>();
-        String turn = "";
+    public String solution1(String[] cards1, String[] cards2, String[] goal) {
+        int index1 = 0;
+        int index2 = 0;
         String answer = "Yes";
 
-        for(String s: goal){goalQueue.add(s);}
+        for(int i=0; i<goal.length; i++){
 
-        for(int i=0; i<goalQueue.size(); i++){
-            if( i<cards1.length
-                    || (cards1[i].equals(goalQueue.peek()) && turn.equals("cards1")) ){
-                goalQueue.remove();
-                turn = "cards2";
-            }else if( i<cards2.length ||
-                    (cards2[i].equals(goalQueue.peek()) && turn.equals("cards2")) ){
-                goalQueue.remove();
-                turn = "cards1";
+            if( index1<cards1.length && cards1[index1].equals(goal[i])){
+                index1++;
+            }else if( index2<cards2.length && cards2[index2].equals(goal[i])){
+                index2++;
             }else{
                 answer = "No";
             }
         }
         return answer;
+    }
+
+    public String solution(String[] cards1, String[] cards2, String[] goal) {
+        Queue<String> qGoal = new LinkedList<>();
+        Queue<String> qCard1 = new LinkedList<>();
+        Queue<String> qCard2 = new LinkedList<>();
+
+        for(String str : goal) {
+            qGoal.offer(str);
+        }
+
+        for(String card : cards1) {
+            qCard1.offer(card);
+        }
+
+        for(String card : cards2) {
+            qCard2.offer(card);
+        }
+
+        while(!qGoal.isEmpty()) {
+            String str = qGoal.poll();
+
+            if(str.equals(qCard1.peek())) qCard1.poll();
+            else if(str.equals(qCard2.peek())) qCard2.poll();
+            else return "No";
+        }
+
+        return "Yes";
     }
 
 }
